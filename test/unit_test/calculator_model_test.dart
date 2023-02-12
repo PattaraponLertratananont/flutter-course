@@ -7,6 +7,13 @@ void main() {
       final calculator = Calculator();
       calculator.pressNumberic(0);
       expect(calculator.result, "0");
+    })
+    ;
+    test("press 0 > 0 should display 0", () {
+      final calculator = Calculator();
+      calculator.pressNumberic(0);
+      calculator.pressNumberic(0);
+      expect(calculator.result, "0");
     });
 
     test("press 1 should display 1", () {
