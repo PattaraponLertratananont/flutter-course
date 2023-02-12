@@ -7,7 +7,20 @@ class Calculator {
     _display = result.toString();
   }
 
-  double? get result => double.tryParse(_display);
+  String get result {
+    if (_display.endsWith(".")) return _display;
+    if (int.tryParse(_display) != null) {
+      return int.tryParse(_display).toString();
+    } else {
+      final result = double.tryParse(_display);
+      if (result == result!.toInt()) {
+        return result.toInt().toString();
+      } else {
+        return result.toString();
+      }
+    }
+  }
+
   double? get input => double.tryParse(_input);
   double? get oldInput => double.tryParse(_oldInput);
 
@@ -55,6 +68,10 @@ class Calculator {
     _input = _display;
     _oldInput = "";
     _operator = "";
+  }
+
+  void pressDot() {
+    _display += ".";
   }
 }
 

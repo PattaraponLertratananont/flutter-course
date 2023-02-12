@@ -6,53 +6,60 @@ void main() {
     test("press 0 should display 0", () {
       final calculator = Calculator();
       calculator.pressNumberic(0);
-      expect(calculator.result, 0);
+      expect(calculator.result, "0");
     });
 
     test("press 1 should display 1", () {
       final calculator = Calculator();
       calculator.pressNumberic(1);
-      expect(calculator.result, 1);
+      expect(calculator.result, "1");
     });
 
     test("press 1 and 0 should display 10", () {
       final calculator = Calculator();
       calculator.pressNumberic(1);
-      expect(calculator.result, 1);
+      expect(calculator.result, "1");
       calculator.pressNumberic(0);
-      expect(calculator.result, 10);
+      expect(calculator.result, "10");
     });
 
     test("press 0 and 1 should display 1", () {
       final calculator = Calculator();
       calculator.pressNumberic(0);
       calculator.pressNumberic(1);
-      expect(calculator.result, 1);
+      expect(calculator.result, "1");
+    });
+
+    test("press 5 > dot should display 5.", () {
+      final calculator = Calculator();
+      calculator.pressNumberic(5);
+      calculator.pressDot();
+      expect(calculator.result, "5.");
     });
 
     group("Clear", () {
       test("press AC should clear result to 0", () {
         final calculator = Calculator(10);
         calculator.pressAC();
-        expect(calculator.result, 0);
+        expect(calculator.result, "0");
       });
 
       test("press 1 > minus > 4 > Clear > 2 should display -1", () {
         final calculator = Calculator();
         calculator.pressNumberic(1);
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
         calculator.pressMinus();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
         calculator.pressNumberic(4);
-        expect(calculator.result, 4);
+        expect(calculator.result, "4");
         calculator.pressAC();
-        expect(calculator.result, 0);
+        expect(calculator.result, "0");
         calculator.pressNumberic(2);
-        expect(calculator.result, 2);
+        expect(calculator.result, "2");
         expect(calculator.oldInput, 1);
         expect(calculator.input, 2);
         calculator.pressEqual();
-        expect(calculator.result, -1);
+        expect(calculator.result, "-1");
       });
     });
 
@@ -61,7 +68,7 @@ void main() {
         final calculator = Calculator();
         calculator.pressNumberic(1);
         calculator.pressPlus();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
       });
 
       test("press 1 > plus > 1 > 0 > equal should display 11", () {
@@ -70,9 +77,9 @@ void main() {
         calculator.pressPlus();
         calculator.pressNumberic(1);
         calculator.pressNumberic(0);
-        expect(calculator.result, 10);
+        expect(calculator.result, "10");
         calculator.pressEqual();
-        expect(calculator.result, 11);
+        expect(calculator.result, "11");
       });
 
       test("press 1 > plus > 2 > equal should display 3", () {
@@ -83,7 +90,7 @@ void main() {
         expect(calculator.oldInput, 1);
         expect(calculator.input, 2);
         calculator.pressEqual();
-        expect(calculator.result, 3);
+        expect(calculator.result, "3");
       });
 
       test("press 2 > plus > equal should display 4", () {
@@ -91,7 +98,16 @@ void main() {
         calculator.pressNumberic(2);
         calculator.pressPlus();
         calculator.pressEqual();
-        expect(calculator.result, 4);
+        expect(calculator.result, "4");
+      });
+
+      test("press 2 > dot > plus > equal should display 4", () {
+        final calculator = Calculator();
+        calculator.pressNumberic(2);
+        calculator.pressDot();
+        calculator.pressPlus();
+        calculator.pressEqual();
+        expect(calculator.result, "4");
       });
     });
 
@@ -100,7 +116,7 @@ void main() {
         final calculator = Calculator();
         calculator.pressNumberic(1);
         calculator.pressMinus();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
       });
 
       test("press 1 > minus > 1 > 0 > equal should display -9", () {
@@ -110,7 +126,7 @@ void main() {
         calculator.pressNumberic(1);
         calculator.pressNumberic(0);
         calculator.pressEqual();
-        expect(calculator.result, -9);
+        expect(calculator.result, "-9");
       });
 
       test("press 1 > minus > 2 > equal should display -1", () {
@@ -119,7 +135,7 @@ void main() {
         calculator.pressMinus();
         calculator.pressNumberic(2);
         calculator.pressEqual();
-        expect(calculator.result, -1);
+        expect(calculator.result, "-1");
       });
 
       test("press 2 > 0 > minus > equal should clear display to 0", () {
@@ -128,7 +144,17 @@ void main() {
         calculator.pressNumberic(0);
         calculator.pressMinus();
         calculator.pressEqual();
-        expect(calculator.result, 0);
+        expect(calculator.result, "0");
+      });
+
+      test("press 2 > 0 > dot > minus > equal should clear display to 0", () {
+        final calculator = Calculator();
+        calculator.pressNumberic(2);
+        calculator.pressNumberic(0);
+        calculator.pressDot();
+        calculator.pressMinus();
+        calculator.pressEqual();
+        expect(calculator.result, "0");
       });
     });
 
@@ -137,7 +163,7 @@ void main() {
         final calculator = Calculator();
         calculator.pressNumberic(1);
         calculator.pressDivide();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
       });
 
       test("press 5 > divide > 2 > 5 > equal should display 0.2", () {
@@ -149,7 +175,7 @@ void main() {
         expect(calculator.oldInput, 5);
         expect(calculator.input, 25);
         calculator.pressEqual();
-        expect(calculator.result, 5 / 25);
+        expect(calculator.result, "0.2");
       });
 
       test("press 1 > divide > 8 > equal should display 0.125", () {
@@ -158,7 +184,7 @@ void main() {
         calculator.pressDivide();
         calculator.pressNumberic(8);
         calculator.pressEqual();
-        expect(calculator.result, 0.125);
+        expect(calculator.result, "0.125");
       });
 
       test(
@@ -169,7 +195,19 @@ void main() {
         calculator.pressNumberic(0);
         calculator.pressDivide();
         calculator.pressEqual();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
+      });
+
+      test(
+          "press 2 > 0 > dot > divide > equal should divide with same value (should alway display 1)",
+          () {
+        final calculator = Calculator();
+        calculator.pressNumberic(2);
+        calculator.pressNumberic(0);
+        calculator.pressDot();
+        calculator.pressDivide();
+        calculator.pressEqual();
+        expect(calculator.result, "1");
       });
     });
 
@@ -178,7 +216,7 @@ void main() {
         final calculator = Calculator();
         calculator.pressNumberic(1);
         calculator.pressMultiply();
-        expect(calculator.result, 1);
+        expect(calculator.result, "1");
       });
 
       test("press 5 > multiply > 4 > 9 > equal should display 245", () {
@@ -190,7 +228,7 @@ void main() {
         expect(calculator.oldInput, 5);
         expect(calculator.input, 49);
         calculator.pressEqual();
-        expect(calculator.result, 5 * 49);
+        expect(calculator.result, "245");
       });
 
       test("press 1 > multiply > 9 > equal should display 9", () {
@@ -199,7 +237,7 @@ void main() {
         calculator.pressMultiply();
         calculator.pressNumberic(9);
         calculator.pressEqual();
-        expect(calculator.result, 9);
+        expect(calculator.result, "9");
       });
 
       test("press 8 > multiply > equal should multiply with same value", () {
@@ -207,7 +245,17 @@ void main() {
         calculator.pressNumberic(8);
         calculator.pressMultiply();
         calculator.pressEqual();
-        expect(calculator.result, 8 * 8);
+        expect(calculator.result, "64");
+      });
+
+      test("press 8 > dot > multiply > equal should multiply with same value",
+          () {
+        final calculator = Calculator();
+        calculator.pressNumberic(8);
+        calculator.pressDot();
+        calculator.pressMultiply();
+        calculator.pressEqual();
+        expect(calculator.result, "64");
       });
     });
   });
