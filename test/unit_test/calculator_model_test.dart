@@ -30,10 +30,30 @@ void main() {
       expect(calculator.result, 1);
     });
 
-    test("press AC should clear result to 0", () {
-      final calculator = Calculator(10);
-      calculator.pressAC();
-      expect(calculator.result, 0);
+    group("Clear", () {
+      test("press AC should clear result to 0", () {
+        final calculator = Calculator(10);
+        calculator.pressAC();
+        expect(calculator.result, 0);
+      });
+
+      test("press 1 > minus > 4 > Clear > 2 should display -1", () {
+        final calculator = Calculator();
+        calculator.pressNumberic(1);
+        expect(calculator.result, 1);
+        calculator.pressMinus();
+        expect(calculator.result, 1);
+        calculator.pressNumberic(4);
+        expect(calculator.result, 4);
+        calculator.pressAC();
+        expect(calculator.result, 0);
+        calculator.pressNumberic(2);
+        expect(calculator.result, 2);
+        expect(calculator.oldInput, 1);
+        expect(calculator.input, 2);
+        calculator.pressEqual();
+        expect(calculator.result, -1);
+      });
     });
 
     group("Plus", () {

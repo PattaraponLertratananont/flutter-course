@@ -12,10 +12,15 @@ class Calculator {
   double? get oldInput => double.tryParse(_oldInput);
 
   void pressAC() {
-    _input = "";
-    _oldInput = "";
-    _operator = "";
-    _display = "0";
+    if (_oldInput.isNotEmpty && _operator.isNotEmpty) {
+      _input = "";
+      _display = "0";
+    } else {
+      _input = "";
+      _oldInput = "";
+      _operator = "";
+      _display = "0";
+    }
   }
 
   void pressNumberic(int numberic) {
