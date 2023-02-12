@@ -7,8 +7,7 @@ void main() {
       final calculator = Calculator();
       calculator.pressNumberic(0);
       expect(calculator.result, "0");
-    })
-    ;
+    });
     test("press 0 > 0 should display 0", () {
       final calculator = Calculator();
       calculator.pressNumberic(0);
@@ -118,6 +117,7 @@ void main() {
       });
     });
 
+    // TODO เหลือเรื่องใส่ลบก่อนตัวเลข
     group("Minus", () {
       test("press 1 > minus should display 1", () {
         final calculator = Calculator();
@@ -263,6 +263,23 @@ void main() {
         calculator.pressMultiply();
         calculator.pressEqual();
         expect(calculator.result, "64");
+      });
+    });
+
+    group("Percentage", () {
+      test("press 5 > percentage should dsiplay 0.05", () {
+        final calculator = Calculator();
+        calculator.pressNumberic(5);
+        calculator.pressPercentage();
+        expect(calculator.result, "0.05");
+      });
+
+      test("press 5 > percentage > percentage should dsiplay 0.0005", () {
+        final calculator = Calculator();
+        calculator.pressNumberic(5);
+        calculator.pressPercentage();
+        calculator.pressPercentage();
+        expect(calculator.result, "0.0005");
       });
     });
   });

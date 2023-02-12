@@ -42,22 +42,22 @@ class Calculator {
   }
 
   void pressPlus() {
-    pressOperator("+");
+    _pressOperator("+");
   }
 
   void pressMinus() {
-    pressOperator("-");
+    _pressOperator("-");
   }
 
   void pressDivide() {
-    pressOperator("/");
+    _pressOperator("/");
   }
 
   void pressMultiply() {
-    pressOperator("x");
+    _pressOperator("x");
   }
 
-  void pressOperator(String operator) {
+  void _pressOperator(String operator) {
     _operator = operator;
     _oldInput = _input;
     _input = "";
@@ -72,6 +72,13 @@ class Calculator {
 
   void pressDot() {
     _display += ".";
+  }
+
+  void pressPercentage() {
+    if (_input.isNotEmpty) {
+      _display = (input! / 100).toString();
+      _input = _display;
+    }
   }
 }
 
