@@ -75,7 +75,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "%",
                   bgColor: const Color(0xFFCDCDCD),
                   valueColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: percentage,
                 ),
                 ButtonCalculator(
                   "÷",
@@ -204,6 +204,12 @@ class _MyCalculatorState extends State<MyCalculator> {
     );
   }
 
+  void percentage() {
+    setState(() {
+      value = (double.parse(value) / 100).toString();
+    });
+  }
+
   void setValueToNumberic(int numberic) {
     setState(() {
       if (operator.isNotEmpty) {
@@ -230,16 +236,16 @@ class _MyCalculatorState extends State<MyCalculator> {
     setState(() {
       switch (operator) {
         case "+":
-          value = (int.parse(oldValue) + int.parse(value)).toString();
+          value = (double.parse(oldValue) + double.parse(value)).toString();
           break;
         case "-":
-          value = (int.parse(oldValue) - int.parse(value)).toString();
+          value = (double.parse(oldValue) - double.parse(value)).toString();
           break;
         case "x":
-          value = (int.parse(oldValue) * int.parse(value)).toString();
+          value = (double.parse(oldValue) * double.parse(value)).toString();
           break;
         case "/":
-          value = (int.parse(oldValue) ~/ int.parse(value)).toString();
+          value = (double.parse(oldValue) / double.parse(value)).toString();
           break;
         default:
       }
