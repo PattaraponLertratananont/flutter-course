@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -43,9 +44,14 @@ class _MyCalculatorState extends State<MyCalculator> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text(
-                    value,
-                    style: const TextStyle(color: Colors.white, fontSize: 60),
+                  Expanded(
+                    child: AutoSizeText(
+                      value,
+                      textAlign: TextAlign.right,
+                      style: const TextStyle(color: Colors.white, fontSize: 60),
+                      minFontSize: 10,
+                      maxLines: 1,
+                    ),
                   ),
                 ],
               ),
@@ -236,16 +242,24 @@ class _MyCalculatorState extends State<MyCalculator> {
     setState(() {
       switch (operator) {
         case "+":
-          value = (double.parse(oldValue) + double.parse(value)).toString();
+          value = double.parse((double.parse(oldValue) + double.parse(value))
+                  .toStringAsFixed(4))
+              .toString();
           break;
         case "-":
-          value = (double.parse(oldValue) - double.parse(value)).toString();
+          value = double.parse((double.parse(oldValue) - double.parse(value))
+                  .toStringAsFixed(4))
+              .toString();
           break;
         case "x":
-          value = (double.parse(oldValue) * double.parse(value)).toString();
+          value = double.parse((double.parse(oldValue) * double.parse(value))
+                  .toStringAsFixed(4))
+              .toString();
           break;
         case "/":
-          value = (double.parse(oldValue) / double.parse(value)).toString();
+          value = double.parse((double.parse(oldValue) / double.parse(value))
+                  .toStringAsFixed(4))
+              .toString();
           break;
         default:
       }
