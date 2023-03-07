@@ -17,8 +17,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyCalculator extends StatelessWidget {
+class MyCalculator extends StatefulWidget {
   const MyCalculator({super.key});
+
+  @override
+  State<MyCalculator> createState() => _MyCalculatorState();
+}
+
+class _MyCalculatorState extends State<MyCalculator> {
+  String value = "0";
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +40,10 @@ class MyCalculator extends StatelessWidget {
               margin: const EdgeInsets.only(right: 16, bottom: 24),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
+                children: [
                   Text(
-                    "0",
-                    style: TextStyle(color: Colors.white, fontSize: 60),
+                    value,
+                    style: const TextStyle(color: Colors.white, fontSize: 60),
                   ),
                 ],
               ),
@@ -48,7 +55,11 @@ class MyCalculator extends StatelessWidget {
                   "AC",
                   bgColor: const Color(0xFFCDCDCD),
                   valueColor: Colors.black,
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {
+                      value = "0";
+                    });
+                  },
                 ),
                 const ButtonCalculator(
                   "...",
@@ -78,19 +89,19 @@ class MyCalculator extends StatelessWidget {
                   "7",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(7),
                 ),
                 ButtonCalculator(
                   "8",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(8),
                 ),
                 ButtonCalculator(
                   "9",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(9),
                 ),
                 ButtonCalculator(
                   "x",
@@ -108,19 +119,19 @@ class MyCalculator extends StatelessWidget {
                   "4",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(4),
                 ),
                 ButtonCalculator(
                   "5",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(5),
                 ),
                 ButtonCalculator(
                   "6",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(6),
                 ),
                 ButtonCalculator(
                   "-",
@@ -138,19 +149,19 @@ class MyCalculator extends StatelessWidget {
                   "1",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(1),
                 ),
                 ButtonCalculator(
                   "2",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(2),
                 ),
                 ButtonCalculator(
                   "3",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(3),
                 ),
                 ButtonCalculator(
                   "+",
@@ -165,7 +176,7 @@ class MyCalculator extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ButtonZero(
-                  onPressed: () {},
+                  onPressed: () => setValueToNumberic(0),
                 ),
                 const SizedBox(width: 12),
                 ButtonCalculator(
@@ -187,6 +198,16 @@ class MyCalculator extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void setValueToNumberic(int numberic) {
+    setState(() {
+      if (value == "0") {
+        value = numberic.toString();
+      } else {
+        value += numberic.toString();
+      }
+    });
   }
 }
 
