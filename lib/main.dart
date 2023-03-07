@@ -44,66 +44,29 @@ class MyCalculator extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: const Color(0xFFCDCDCD),
-                  ),
+                ButtonCalculator(
+                  "AC",
+                  bgColor: const Color(0xFFCDCDCD),
+                  valueColor: Colors.black,
                   onPressed: () {},
-                  child: const Text(
-                    "AC",
-                    style: TextStyle(color: Colors.black, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: const Color(0xFFCDCDCD),
-                    disabledBackgroundColor: const Color(0xFFCDCDCD),
-                  ),
+                const ButtonCalculator(
+                  "...",
+                  bgColor: Color(0xFFCDCDCD),
+                  valueColor: Colors.black,
                   onPressed: null,
-                  child: const Text(
-                    "...",
-                    style: TextStyle(color: Colors.black, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: const Color(0xFFCDCDCD),
-                  ),
+                ButtonCalculator(
+                  "%",
+                  bgColor: const Color(0xFFCDCDCD),
+                  valueColor: Colors.black,
                   onPressed: () {},
-                  child: const Text(
-                    "%",
-                    style: TextStyle(color: Colors.black, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.amber,
-                  ),
+                ButtonCalculator(
+                  "÷",
+                  bgColor: Colors.amber,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "÷",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
               ],
             ),
@@ -111,65 +74,29 @@ class MyCalculator extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "7",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "7",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "8",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "8",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "9",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "9",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.amber,
-                  ),
+                ButtonCalculator(
+                  "x",
+                  bgColor: Colors.amber,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "x",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
               ],
             ),
@@ -177,65 +104,29 @@ class MyCalculator extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "4",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "4",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "5",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "5",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "6",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "6",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.amber,
-                  ),
+                ButtonCalculator(
+                  "-",
+                  bgColor: Colors.amber,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "-",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
               ],
             ),
@@ -243,65 +134,29 @@ class MyCalculator extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "1",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "1",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "2",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "2",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                  ),
+                ButtonCalculator(
+                  "3",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "3",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.amber,
-                  ),
+                ButtonCalculator(
+                  "+",
+                  bgColor: Colors.amber,
+                  valueColor: Colors.white,
                   onPressed: () {},
-                  child: const Text(
-                    "+",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
                 ),
               ],
             ),
@@ -309,68 +164,95 @@ class MyCalculator extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Expanded(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            MediaQuery.of(context).size.width * 0.175),
-                      ),
-                      fixedSize: Size(
-                        MediaQuery.of(context).size.width * 0.2,
-                        MediaQuery.of(context).size.width * 0.2,
-                      ),
-                      backgroundColor: Colors.grey.shade800,
-                    ),
-                    onPressed: () {},
-                    child: Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 16),
-                      child: const Text(
-                        "0",
-                        style: TextStyle(color: Colors.white, fontSize: 24),
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.grey.shade800,
-                    disabledBackgroundColor: Colors.grey.shade800,
-                  ),
-                  statesController: MaterialStatesController(),
-                  onPressed: null,
-                  child: const Text(
-                    "...",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    fixedSize: Size(
-                      MediaQuery.of(context).size.width * 0.2,
-                      MediaQuery.of(context).size.width * 0.2,
-                    ),
-                    backgroundColor: Colors.amber,
-                  ),
+                ButtonZero(
                   onPressed: () {},
-                  child: const Text(
-                    "=",
-                    style: TextStyle(color: Colors.white, fontSize: 24),
-                  ),
+                ),
+                const SizedBox(width: 12),
+                ButtonCalculator(
+                  "...",
+                  bgColor: Colors.grey.shade800,
+                  valueColor: Colors.white,
+                  onPressed: null,
+                ),
+                const SizedBox(width: 12),
+                ButtonCalculator(
+                  "=",
+                  bgColor: Colors.amber,
+                  valueColor: Colors.white,
+                  onPressed: () {},
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ButtonZero extends StatelessWidget {
+  final void Function()? onPressed;
+  const ButtonZero({super.key, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+                MediaQuery.of(context).size.width * 0.175),
+          ),
+          fixedSize: Size(
+            MediaQuery.of(context).size.width * 0.2,
+            MediaQuery.of(context).size.width * 0.2,
+          ),
+          backgroundColor: Colors.grey.shade800,
+          disabledBackgroundColor: Colors.grey.shade800,
+        ),
+        onPressed: onPressed,
+        child: Container(
+          alignment: Alignment.centerLeft,
+          padding: const EdgeInsets.only(left: 16),
+          child: const Text(
+            "0",
+            style: TextStyle(color: Colors.white, fontSize: 24),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ButtonCalculator extends StatelessWidget {
+  final String value;
+  final Color valueColor;
+  final Color bgColor;
+  final void Function()? onPressed;
+  const ButtonCalculator(
+    this.value, {
+    super.key,
+    required this.valueColor,
+    required this.bgColor,
+    this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        shape: const CircleBorder(),
+        fixedSize: Size(
+          MediaQuery.of(context).size.width * 0.2,
+          MediaQuery.of(context).size.width * 0.2,
+        ),
+        backgroundColor: bgColor,
+        disabledBackgroundColor: bgColor,
+      ),
+      onPressed: onPressed,
+      child: Text(
+        value,
+        style: TextStyle(color: valueColor, fontSize: 24),
       ),
     );
   }
