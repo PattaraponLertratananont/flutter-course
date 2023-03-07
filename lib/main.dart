@@ -25,7 +25,9 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
+  String oldValue = "0";
   String value = "0";
+  String operator = "";
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +59,9 @@ class _MyCalculatorState extends State<MyCalculator> {
                   valueColor: Colors.black,
                   onPressed: () {
                     setState(() {
+                      oldValue = "0";
                       value = "0";
+                      operator = "";
                     });
                   },
                 ),
@@ -77,7 +81,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "÷",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setOperator("/"),
                 ),
               ],
             ),
@@ -107,7 +111,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "x",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setOperator("x"),
                 ),
               ],
             ),
@@ -137,7 +141,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "-",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setOperator("-"),
                 ),
               ],
             ),
@@ -167,7 +171,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "+",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: () => setOperator("+"),
                 ),
               ],
             ),
@@ -190,7 +194,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "=",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () {},
+                  onPressed: calculate,
                 ),
               ],
             ),
@@ -202,11 +206,45 @@ class _MyCalculatorState extends State<MyCalculator> {
 
   void setValueToNumberic(int numberic) {
     setState(() {
-      if (value == "0") {
+      if (operator.isNotEmpty) {
+        oldValue = value;
         value = numberic.toString();
       } else {
-        value += numberic.toString();
+        oldValue = value;
+        if (value == "0") {
+          value = numberic.toString();
+        } else {
+          value += numberic.toString();
+        }
       }
+    });
+  }
+
+  void setOperator(String operator) {
+    setState(() {
+      this.operator = operator;
+    });
+  }
+
+  void calculate() {
+    setState(() {
+      switch (operator) {
+        case "+":
+          value = (int.parse(oldValue) + int.parse(value)).toString();
+          break;
+        case "-":
+          value = (int.parse(oldValue) - int.parse(value)).toString();
+          break;
+        case "x":
+          value = (int.parse(oldValue) * int.parse(value)).toString();
+          break;
+        case "/":
+          value = (int.parse(oldValue) ~/ int.parse(value)).toString();
+          break;
+        default:
+      }
+      oldValue = "0";
+      operator = "";
     });
   }
 }
