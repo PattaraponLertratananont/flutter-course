@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:calculator/model.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,9 +27,7 @@ class MyCalculator extends StatefulWidget {
 }
 
 class _MyCalculatorState extends State<MyCalculator> {
-  String oldValue = "0";
-  String value = "0";
-  String operator = "";
+  final calculator = Calculator();
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +45,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                 children: [
                   Expanded(
                     child: AutoSizeText(
-                      value,
+                      calculator.value,
                       textAlign: TextAlign.right,
                       style: const TextStyle(color: Colors.white, fontSize: 60),
                       minFontSize: 10,
@@ -63,13 +62,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "AC",
                   bgColor: const Color(0xFFCDCDCD),
                   valueColor: Colors.black,
-                  onPressed: () {
-                    setState(() {
-                      oldValue = "0";
-                      value = "0";
-                      operator = "";
-                    });
-                  },
+                  onPressed: _clearAll,
                 ),
                 const ButtonCalculator(
                   "...",
@@ -81,13 +74,13 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "%",
                   bgColor: const Color(0xFFCDCDCD),
                   valueColor: Colors.black,
-                  onPressed: percentage,
+                  onPressed: _percentage,
                 ),
                 ButtonCalculator(
                   "÷",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () => setOperator("/"),
+                  onPressed: () => _setOperator("/"),
                 ),
               ],
             ),
@@ -99,25 +92,25 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "7",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(7),
+                  onPressed: () => _updateValue(7),
                 ),
                 ButtonCalculator(
                   "8",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(8),
+                  onPressed: () => _updateValue(8),
                 ),
                 ButtonCalculator(
                   "9",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(9),
+                  onPressed: () => _updateValue(9),
                 ),
                 ButtonCalculator(
                   "x",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () => setOperator("x"),
+                  onPressed: () => _setOperator("x"),
                 ),
               ],
             ),
@@ -129,25 +122,25 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "4",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(4),
+                  onPressed: () => _updateValue(4),
                 ),
                 ButtonCalculator(
                   "5",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(5),
+                  onPressed: () => _updateValue(5),
                 ),
                 ButtonCalculator(
                   "6",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(6),
+                  onPressed: () => _updateValue(6),
                 ),
                 ButtonCalculator(
                   "-",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () => setOperator("-"),
+                  onPressed: () => _setOperator("-"),
                 ),
               ],
             ),
@@ -159,25 +152,25 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "1",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(1),
+                  onPressed: () => _updateValue(1),
                 ),
                 ButtonCalculator(
                   "2",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(2),
+                  onPressed: () => _updateValue(2),
                 ),
                 ButtonCalculator(
                   "3",
                   bgColor: Colors.grey.shade800,
                   valueColor: Colors.white,
-                  onPressed: () => setValueToNumberic(3),
+                  onPressed: () => _updateValue(3),
                 ),
                 ButtonCalculator(
                   "+",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: () => setOperator("+"),
+                  onPressed: () => _setOperator("+"),
                 ),
               ],
             ),
@@ -186,7 +179,7 @@ class _MyCalculatorState extends State<MyCalculator> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ButtonZero(
-                  onPressed: () => setValueToNumberic(0),
+                  onPressed: () => _updateValue(0),
                 ),
                 const SizedBox(width: 12),
                 ButtonCalculator(
@@ -200,7 +193,7 @@ class _MyCalculatorState extends State<MyCalculator> {
                   "=",
                   bgColor: Colors.amber,
                   valueColor: Colors.white,
-                  onPressed: calculate,
+                  onPressed: _calculate,
                 ),
               ],
             ),
@@ -210,61 +203,33 @@ class _MyCalculatorState extends State<MyCalculator> {
     );
   }
 
-  void percentage() {
+  void _calculate() {
     setState(() {
-      value = (double.parse(value) / 100).toString();
+      calculator.calculate();
     });
   }
 
-  void setValueToNumberic(int numberic) {
+  void _clearAll() {
     setState(() {
-      if (operator.isNotEmpty) {
-        oldValue = value;
-        value = numberic.toString();
-      } else {
-        oldValue = value;
-        if (value == "0") {
-          value = numberic.toString();
-        } else {
-          value += numberic.toString();
-        }
-      }
+      calculator.clearAll();
     });
   }
 
-  void setOperator(String operator) {
+  void _percentage() {
     setState(() {
-      this.operator = operator;
+      calculator.percentage();
     });
   }
 
-  void calculate() {
+  void _updateValue(int numberic) {
     setState(() {
-      switch (operator) {
-        case "+":
-          value = double.parse((double.parse(oldValue) + double.parse(value))
-                  .toStringAsFixed(4))
-              .toString();
-          break;
-        case "-":
-          value = double.parse((double.parse(oldValue) - double.parse(value))
-                  .toStringAsFixed(4))
-              .toString();
-          break;
-        case "x":
-          value = double.parse((double.parse(oldValue) * double.parse(value))
-                  .toStringAsFixed(4))
-              .toString();
-          break;
-        case "/":
-          value = double.parse((double.parse(oldValue) / double.parse(value))
-                  .toStringAsFixed(4))
-              .toString();
-          break;
-        default:
-      }
-      oldValue = "0";
-      operator = "";
+      calculator.updateValue(numberic);
+    });
+  }
+
+  void _setOperator(String operator) {
+    setState(() {
+      calculator.setOperator(operator);
     });
   }
 }
