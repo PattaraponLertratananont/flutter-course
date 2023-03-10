@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String value = "0";
+  String operator = "";
+  String oldValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +23,9 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Text(
-                "0",
-                style: TextStyle(
+              Text(
+                value,
+                style: const TextStyle(
                   fontSize: 54,
                   color: Colors.white,
                 ),
@@ -29,13 +38,13 @@ class HomePage extends StatelessWidget {
                     label: "AC",
                     bgColor: Colors.grey,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: allClear,
                   ),
                   CalculatorButton(
                     label: "=",
                     bgColor: Colors.amber.shade800,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: calculate,
                   ),
                 ],
               ),
@@ -47,25 +56,25 @@ class HomePage extends StatelessWidget {
                     label: "7",
                     bgColor: Colors.grey.shade800,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () => onTabOperand("7"),
                   ),
                   CalculatorButton(
                     label: "8",
                     bgColor: Colors.grey.shade800,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () => onTabOperand("8"),
                   ),
                   CalculatorButton(
                     label: "9",
                     bgColor: Colors.grey.shade800,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () => onTabOperand("9"),
                   ),
                   CalculatorButton(
                     label: "x",
                     bgColor: Colors.amber.shade800,
                     labelColor: Colors.white,
-                    onPressed: () {},
+                    onPressed: () => onTabOperator("x"),
                   ),
                 ],
               ),
@@ -74,6 +83,36 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void onTabOperand(String operand) {
+    setState(() {
+      if (operator.isNotEmpty) oldValue = value;
+      value = operand;
+    });
+  }
+
+  void onTabOperator(String operator) {
+    setState(() {
+      this.operator = operator;
+    });
+  }
+
+  void calculate() {
+    setState(() {
+      var intOldValue = int.parse(oldValue);
+      var intValue = (int.tryParse(value) ?? 0);
+      var result = intOldValue * intValue;
+      value = result.toString();
+    });
+  }
+
+  void allClear() {
+    setState(() {
+      value = "0";
+      operator = "";
+      oldValue = "";
+    });
   }
 }
 
