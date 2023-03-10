@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'calculator.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,9 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String value = "0";
-  String operator = "";
-  String oldValue = "";
+  final calculator = Calculator();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                value,
+                calculator.value,
                 style: const TextStyle(
                   fontSize: 54,
                   color: Colors.white,
@@ -87,31 +87,25 @@ class _HomePageState extends State<HomePage> {
 
   void onTabOperand(String operand) {
     setState(() {
-      if (operator.isNotEmpty) oldValue = value;
-      value = operand;
+      calculator.onTabOperand(operand);
     });
   }
 
   void onTabOperator(String operator) {
     setState(() {
-      this.operator = operator;
+      calculator.onTabOperator(operator);
     });
   }
 
   void calculate() {
     setState(() {
-      var intOldValue = int.parse(oldValue);
-      var intValue = (int.tryParse(value) ?? 0);
-      var result = intOldValue * intValue;
-      value = result.toString();
+      calculator.calculate();
     });
   }
 
   void allClear() {
     setState(() {
-      value = "0";
-      operator = "";
-      oldValue = "";
+      calculator.allClear();
     });
   }
 }
