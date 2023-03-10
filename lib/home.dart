@@ -25,6 +25,7 @@ class _HomePageState extends State<HomePage> {
             children: [
               Text(
                 calculator.value,
+                key: const ValueKey("result"),
                 style: const TextStyle(
                   fontSize: 54,
                   color: Colors.white,
@@ -41,10 +42,10 @@ class _HomePageState extends State<HomePage> {
                     onPressed: allClear,
                   ),
                   CalculatorButton(
-                    label: "=",
+                    label: "÷",
                     bgColor: Colors.amber.shade800,
                     labelColor: Colors.white,
-                    onPressed: calculate,
+                    onPressed: () {},
                   ),
                 ],
               ),
@@ -75,6 +76,84 @@ class _HomePageState extends State<HomePage> {
                     bgColor: Colors.amber.shade800,
                     labelColor: Colors.white,
                     onPressed: () => onTabOperator("x"),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CalculatorButton(
+                    label: "4",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("4"),
+                  ),
+                  CalculatorButton(
+                    label: "5",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("5"),
+                  ),
+                  CalculatorButton(
+                    label: "6",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("6"),
+                  ),
+                  CalculatorButton(
+                    label: "-",
+                    bgColor: Colors.amber.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperator("-"),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CalculatorButton(
+                    label: "1",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("1"),
+                  ),
+                  CalculatorButton(
+                    label: "2",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("2"),
+                  ),
+                  CalculatorButton(
+                    label: "3",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("3"),
+                  ),
+                  CalculatorButton(
+                    label: "+",
+                    bgColor: Colors.amber.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperator("+"),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  CalculatorButton(
+                    label: "0",
+                    bgColor: Colors.grey.shade800,
+                    labelColor: Colors.white,
+                    onPressed: () => onTabOperand("1"),
+                  ),
+                  CalculatorButton(
+                    label: "=",
+                    bgColor: Colors.amber.shade800,
+                    labelColor: Colors.white,
+                    onPressed: calculate,
                   ),
                 ],
               ),

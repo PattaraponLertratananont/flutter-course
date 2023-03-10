@@ -1,9 +1,12 @@
-import 'package:calculator/home.dart'; // Homepage
-import 'package:flutter/material.dart'; // Key
-import 'package:flutter_test/flutter_test.dart'; // testWidgets
+import 'package:calculator/home.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:integration_test/integration_test.dart';
 
 void main() {
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   testWidgets("คูณตัวเลข หนึ่ง ตำแหน่ง", (tester) async {
+    tester.binding.window.physicalSizeTestValue = const Size(1170, 2532);
     await tester.pumpWidget(
       const MaterialApp(home: HomePage()),
     );
