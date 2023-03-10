@@ -126,6 +126,7 @@ class CalculatorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      key: Key("button-$label"),
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         shape: const CircleBorder(),
